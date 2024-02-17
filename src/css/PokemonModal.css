@@ -1,0 +1,144 @@
+.modal-container-outer {
+  width: 80%;
+  height: 550px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 200;
+  transform: translate(-50%, -50%);
+  border: 1px solid #efefef;
+  border-radius: 0.2rem;
+  text-align: center;
+  /* cursor: url(../img/mouce-icon.jpg),auto; */
+}
+
+.modal-container {
+  overflow: hidden;
+  height: 100%;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.modal-container::-webkit-scrollbar{
+  display: none;
+}
+
+.close-icon {
+  position: absolute;
+  background-color: #d8d8d8;
+  border-radius: 100%;
+  padding: 10px;
+  width: 15px;
+  height: 15px;
+  line-height: 10px;
+  top: -13px;
+  right: -13px;
+  transform: rotate(45deg);
+  cursor: pointer;
+  z-index: 300;
+}
+
+.header {
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pokemon-dynamic {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  cursor: pointer;
+}
+
+.base-info {
+  width: 80%;
+  margin: 0 auto;
+}
+
+/* .slide-icon {
+  color: #646363;
+  font-size: 2rem;
+  margin: 0 20px;
+} */
+
+.sound {
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.sound:hover {
+  opacity: 0.7;
+}
+
+.sound-icon {
+  width: 20px;
+  height: 30px;
+}
+
+.pokemon-images {
+  padding: 20px 0;
+  width: 100%;
+}
+
+.pokemon-image {
+  width: 200%;
+  max-width: 150px;
+}
+
+.pokemon-info {
+  background-color: #fff;
+  height: 100%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 50px;
+}
+
+.type {
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.type p {
+  width: 100px;
+  height: 40px;
+  line-height: 40px;
+}
+
+.ability-one {
+  border: 2px #c6c4c4 solid;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.size {
+  display: flex;
+  justify-content: space-between;
+  width: 85%;
+  margin: 0 auto;
+}
+
+.status {
+  text-align: left;
+}
+
+.status-row {
+  margin-bottom: 8px;
+}
+
+.status-bar-bg {
+  background-color: #eee;
+  width: 100%;
+  height: 10px;
+  border-radius: 5px;
+}
+
+.status-bar-fill {
+  background-color: #3498db;
+  height: 100%;
+  border-radius: 5px;
+}
