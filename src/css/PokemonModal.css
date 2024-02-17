@@ -89,6 +89,10 @@
   max-width: 150px;
 }
 
+.slick-arrow {
+  display: none !important;
+}
+
 .pokemon-info {
   background-color: #fff;
   height: 100%;
