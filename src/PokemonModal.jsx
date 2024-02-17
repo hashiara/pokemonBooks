@@ -57,7 +57,7 @@ const PokemonModal = ({ modalState, id, jpName, gifImages, types, jpTypes, sound
           <div className="top-row">
             <div className="header">
               <h1 className="font-l">{id}　{jpName}</h1>
-              <div className="sound" onClick={() => play()}>
+              <div className="sound" onClick={() => play()} onTouchEnd={() => play()}>
                 <img className="sound-icon" src={soundIcon} alt="サウンド" />
               </div>
             </div>
