@@ -13,6 +13,7 @@
   transition: 0.3s;
   position: relative;
   cursor: pointer;
+  color: #000;
 }
 
 .thumb-container:hover {
