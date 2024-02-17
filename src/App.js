@@ -129,13 +129,13 @@ function App() {
               .then(res => res.json())
               .then(async (datas) => {
                 datas.names.forEach(data => {
-                  if (data.language.name == "ja") {
+                  if (data.language.name === "ja") {
                     _abilities.push(data.name);
                   }
                 })
                 let loopFlag = true;
                 datas.flavor_text_entries.forEach(data => {
-                  if (loopFlag && data.language.name == "ja") {
+                  if (loopFlag && data.language.name === "ja") {
                     _abilityDetails.push(data.flavor_text);
                     loopFlag = false;
                   }
