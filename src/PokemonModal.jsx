@@ -8,8 +8,22 @@ import 'slick-carousel/slick/slick-theme.css';
 import useSound from 'use-sound';
 
 // アロー関数でコンポーネントを定義
-const PokemonModal = ({ modalState, id, jpName, gifImages, types, jpTypes, sound, abilities, abilityDetails, height, weight, stats }) => {
-  const [play] = useSound(`${sound}`);
+const PokemonModal = ({ 
+  modalState, 
+  id, 
+  jpName, 
+  gifImages, 
+  types, 
+  jpTypes, 
+  sound, 
+  abilities, 
+  abilityDetails, 
+  height, 
+  weight, 
+  stats 
+}) => {
+
+  const [play] = useSound(sound);
   const sliderRef = useRef();
 
   const settings = {
@@ -57,8 +71,9 @@ const PokemonModal = ({ modalState, id, jpName, gifImages, types, jpTypes, sound
           <div className="top-row">
             <div className="header">
               <h1 className="font-l">{id}　{jpName}</h1>
-              <div className="sound" onClick={() => play()} onTouchEnd={() => play()}>
-                <img className="sound-icon" src={soundIcon} alt="サウンド" />
+              <div className="sound">
+                <img className="sound-icon" src={soundIcon} alt="サウンド" onClick={() => play()} />
+                <audio src={sound}></audio>
               </div>
             </div>
             <div className="pokemon-dynamic">
