@@ -9,7 +9,6 @@ function App() {
   const [selectPokemon, setSelectPokemon] = useState([]);
   const [modalFlag, setModalFlag] = useState(false);
   const [url, setUrl] = useState("https://pokeapi.co/api/v2/pokemon?limit=20");
-  // const [url, setUrl] = useState("https://pokeapi.co/api/v2/pokemon?limit=721");
   const [isLoading, setIsLoading] = useState(false);
 
   let addPokemonFlag = true;
@@ -23,7 +22,7 @@ function App() {
   const search = (value) => {
     // 検索欄が未入力なら始めの20体を表示
     if (value === "") {
-      getAllPokemons();
+      window.location.reload();
       return;
     }
 
