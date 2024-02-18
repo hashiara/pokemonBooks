@@ -23,7 +23,7 @@ const PokemonModal = ({
   stats 
 }) => {
 
-  const [play] = useSound(sound);
+  const audioRef = useRef(sound);
   const sliderRef = useRef();
 
   const settings = {
@@ -62,6 +62,10 @@ const PokemonModal = ({
   };
 
   const maxStat = 200;
+
+  const audioPlay = () => {
+    audioRef.current.play();
+  }
   
   return (
     <>
@@ -72,8 +76,8 @@ const PokemonModal = ({
             <div className="header">
               <h1 className="font-l">{id}　{jpName}</h1>
               <div className="sound">
-                <img className="sound-icon" src={soundIcon} alt="サウンド" onClick={() => play()} />
-                <audio src={sound}></audio>
+                <audio ref={audioRef} src={sound} type="audio/ogg" />
+                <img className="sound-icon" src={soundIcon} alt="サウンド" onClick={audioPlay} />
               </div>
             </div>
             <div className="pokemon-dynamic">
