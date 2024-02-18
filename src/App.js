@@ -3,6 +3,7 @@ import PokemonThumbnails from './PokemonThumbnails';
 import PokemonModal from './PokemonModal';
 import pokemonJson from "./pokemon.json";
 import pokemonTypeJson from "./pokemonType.json";
+import reloadIcon from './img/reload-icon.png';
 
 function App() {
   const [allPokemons, setAllPokemons] = useState([]);
@@ -10,6 +11,7 @@ function App() {
   const [modalFlag, setModalFlag] = useState(false);
   const [url, setUrl] = useState("https://pokeapi.co/api/v2/pokemon?limit=20");
   const [isLoading, setIsLoading] = useState(false);
+  const [moreFlag, setMoreFlag] = useState(true);
 
   let addPokemonFlag = true;
 
@@ -39,6 +41,7 @@ function App() {
       name: serchedPokemon.en.charAt(0).toLowerCase() + serchedPokemon.en.slice(1)
     }));
 
+    setMoreFlag(false);
     addPokemonFlag = false;
     createPokemonObject(serchedPosts, addPokemonFlag);
   }
@@ -102,6 +105,10 @@ function App() {
   useEffect(() => {
     getAllPokemons();
   }, [])
+
+  const handleReload = () => {
+    window.location.reload();
+  }
 
 
   // 押下されたポケモンのデータを取得してモーダル表示
@@ -211,13 +218,20 @@ function App() {
             </button>
           ))}
         </div>
-        {isLoading ? (
-          <div className='load-more'>now loading...</div>
-        ) : (
-          <button className='load-more' onClick={getAllPokemons}>
-            もっとみる！
-          </button>
-        )}
+        {/* 検索時は何も表示しない */}
+        {
+          moreFlag ? (
+            isLoading ? (
+              <div className='load-more'>now loading...</div>
+            ) : (
+              <button className='load-more' onClick={getAllPokemons}>もっとみる！</button>
+            )
+          ) : (
+            <div className='reload' onClick={handleReload}>
+              <img className="reload-icon" src={reloadIcon} alt="リロード" />
+            </div>
+          )
+        }
       </div>
       {
         modalFlag ? 
