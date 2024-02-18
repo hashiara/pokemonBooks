@@ -84,7 +84,7 @@ const PokemonModal = ({
             <div className="header">
               <h1 className="font-l">{id}　{jpName}</h1>
               <div className="sound">
-                <audio src={sound} type="audio/ogg" />
+                <audio src={sound} type="audio/ogg" autoPlay />
                 <img className="sound-icon" src={soundIcon} alt="サウンド" onClick={audioPlay} />
               </div>
             </div>
