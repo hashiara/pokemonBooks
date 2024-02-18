@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import './common.css';
 import './css/PokemonModal.css';
 import soundIcon from './img/sound-icon.png';
+import soundTest from './sound/411_トリデプス.mp3';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css'; 
 import 'slick-carousel/slick/slick-theme.css';
@@ -24,7 +25,7 @@ const PokemonModal = ({
   key
 }) => {
 
-  const [play] = useSound(sound);
+  const [play] = useSound(soundTest);
   const sliderRef = useRef();
 
   const settings = {
