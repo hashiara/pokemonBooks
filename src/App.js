@@ -28,7 +28,7 @@ function App() {
       return;
     }
 
-    // 検索欄に入力されたポケモンを表示
+    // 検索欄に入力されたポケモンを検索
     let serchedPokemons = pokemonJson.filter(
       (pokemon) =>
         pokemon.ja !== undefined &&
@@ -36,11 +36,13 @@ function App() {
         pokemon.ja.toUpperCase().indexOf(value.toUpperCase()) !== -1
     )
 
+    // 検索されたポケモンのオブジェクト名を変換
     let serchedPosts = serchedPokemons.map(serchedPokemon => ({
       ja: serchedPokemon.ja,
       name: serchedPokemon.en.charAt(0).toLowerCase() + serchedPokemon.en.slice(1)
     }));
 
+    // 「もっと見る」ボタンを「リロード」アイコンに変更
     setMoreFlag(false);
     addPokemonFlag = false;
     createPokemonObject(serchedPosts, addPokemonFlag);
@@ -84,6 +86,7 @@ function App() {
             jpType: japanese.type
           }
 
+          // 検索表示なら対象ポケモンのみ、それ以外なら追加でポケモンを表示
           if (!addPokemonFlag && index === 0) {
             setAllPokemons([]);
           }
@@ -106,6 +109,7 @@ function App() {
     getAllPokemons();
   }, [])
 
+  // リロードボタン押下で画面リロード
   const handleReload = () => {
     window.location.reload();
   }
@@ -128,8 +132,6 @@ function App() {
           _types.push(types.type.name);
           _jpTypes.push(pokemonTypeJson[types.type.name]);
         })
-
-        const _sound = data.cries.latest;
 
         const _gifImages = {
           frontDefault: data.sprites.other["showdown"].front_default,
@@ -171,7 +173,6 @@ function App() {
           jpName: pokemonJaName,
           types: _types,
           jpTypes: _jpTypes,
-          sound: _sound,
           gifImages: _gifImages,
           abilities: _abilities,
           abilityDetails: _abilityDetails,
@@ -218,7 +219,6 @@ function App() {
             </button>
           ))}
         </div>
-        {/* 検索時は何も表示しない */}
         {
           moreFlag ? (
             isLoading ? (

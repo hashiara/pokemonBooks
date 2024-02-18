@@ -3,7 +3,7 @@ import './common.css';
 import './css/PokemonThumbnails.css';
 
 // アロー関数でコンポーネントを定義
-const PokemonThumbnails = ({ id, name, jpName, image, iconImage, type, jpType, key }) => {
+const PokemonThumbnails = ({ id, jpName, image, iconImage, jpType, key }) => {
   
   return (
     <>

@@ -15,7 +15,6 @@ const PokemonModal = ({
   gifImages, 
   types, 
   jpTypes, 
-  sound, 
   abilities, 
   abilityDetails, 
   height, 
@@ -56,13 +55,6 @@ const PokemonModal = ({
   };
 
   const maxStat = 200;
-
-  
-
-  // const play = () => {
-  //   const audio = document.querySelector('.audio');
-  //   audio.play();
-  // }
   
   return (
     <>
@@ -78,7 +70,6 @@ const PokemonModal = ({
               </div>
             </div>
             <div className="pokemon-dynamic">
-              {/* <span className="slide-icon slide-left" onClick={slidePrev}>◀</span> */}
               <div className="pokemon-images">
                 {/* slideライブラリ(react-slick)を使用 */}
                 <Slider ref={sliderRef} {...settings}>
@@ -88,7 +79,6 @@ const PokemonModal = ({
                   <img className="pokemon-image" src={gifImages.backShiny} alt={jpName} hidden />
                 </Slider>
               </div>
-              {/* <span className="slide-icon slide-right" onClick={slideNext}>▶</span> */}
             </div>
           </div>
         
