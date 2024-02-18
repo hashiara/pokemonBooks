@@ -9,7 +9,19 @@ function App() {
   const [selectPokemon, setSelectPokemon] = useState([]);
   const [modalFlag, setModalFlag] = useState(false);
   const [url, setUrl] = useState("https://pokeapi.co/api/v2/pokemon?limit=20");
+  // const [url, setUrl] = useState("https://pokeapi.co/api/v2/pokemon?limit=721");
   const [isLoading, setIsLoading] = useState(false);
+
+  let addPokemonFlag = true;
+
+  // 画面ロード時に全ポケモンデータを配列に格納
+  // let pokemonArrays = [];
+  // const allPokemonUrl = "https://pokeapi.co/api/v2/pokemon?limit=2000";
+  //     fetch(allPokemonUrl)
+  //       .then(res => res.json())
+  //       .then(async (data) => {
+  //         pokemonArrays = data;
+  //       })
 
   // 検索ボタン押下でポケモンを検索
   const handleSearchClick = () => {
@@ -25,14 +37,20 @@ function App() {
     }
 
     // 検索欄に入力されたポケモンを表示
-    let serchedPosts = allPokemons.filter(
-      (allPokemon) => 
-        allPokemon.jpName !== undefined &&
-        allPokemon.jpName !== null &&
-        allPokemon.jpName.toUpperCase().indexOf(value.toUpperCase()) !== -1
-    );
+    let serchedPokemons = pokemonJson.filter(
+      (pokemon) =>
+        pokemon.ja !== undefined &&
+        pokemon.ja !== null &&
+        pokemon.ja.toUpperCase().indexOf(value.toUpperCase()) !== -1
+    )
 
-    setAllPokemons(serchedPosts);
+    let serchedPosts = serchedPokemons.map(serchedPokemon => ({
+      ja: serchedPokemon.ja,
+      name: serchedPokemon.en.charAt(0).toLowerCase() + serchedPokemon.en.slice(1)
+    }));
+
+    addPokemonFlag = false;
+    createPokemonObject(serchedPosts, addPokemonFlag);
   }
 
   // ポケモンを画面に表示
@@ -42,7 +60,7 @@ function App() {
     fetch(url)
       .then(res => res.json())
       .then(data => {
-        createPokemonObject(data.results);
+        createPokemonObject(data.results, addPokemonFlag);
 
         // 次の20体をURLにセットする
         setUrl(data.next);
@@ -53,8 +71,8 @@ function App() {
   }
 
   // 取得できたポケモンを表示
-  const createPokemonObject = (results) => {
-    results.forEach(pokemon => {
+  const createPokemonObject = (results, addPokemonFlag) => {
+    results.forEach((pokemon, index) => {
       const pokemonUrl = `https://pokeapi.co/api/v2/pokemon/${pokemon.name}`;
       fetch(pokemonUrl)
         .then(res => res.json())
@@ -72,7 +90,10 @@ function App() {
             jpName: japanese.name,
             jpType: japanese.type
           }
-          // console.log(data);
+
+          if (!addPokemonFlag && index === 0) {
+            setAllPokemons([]);
+          }
           setAllPokemons(currentList => [...currentList, newList].sort((a, b) => a.id - b.id));
         })
     })

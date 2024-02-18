@@ -2882,40 +2882,5 @@
   {
       "ja": "ボルケニオン",
       "en": "Volcanion"
-  },
-
-  {
-    "_comment" : [
-      "https://gist.github.com/PonDad/93922f63c3143489e30c3716d3d176d2",
-      "ここから下が新しく追加したもの",
-      "ja , en のプロパティを要れていないとエラーになるので注意！"
-    ],
-    "ja": "",
-    "en": ""
-  },
-
-  {
-    "ja": "カモネギ",
-    "en": "farfetchd"
-  },
-  {
-    "ja": "ニドラン♀",
-    "en": "nidoran-f"
-  },
-  {
-    "ja": "ニドラン♂",
-    "en": "nidoran-m"
-  },
-  {
-    "ja": "バリヤード",
-    "en": "mr-mime"
-  },
-  {
-    "ja":"デオキシス",
-    "en": "deoxys-normal"
-  },
-  {
-    "ja": "ミノマダム",
-    "en": "wormadam-plant"
   }
 ]

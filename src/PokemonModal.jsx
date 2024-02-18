@@ -20,7 +20,8 @@ const PokemonModal = ({
   abilityDetails, 
   height, 
   weight, 
-  stats 
+  stats,
+  key
 }) => {
 
   const [play] = useSound(sound);
@@ -43,14 +44,6 @@ const PokemonModal = ({
     }
   };
 
-  // const slideNext = () => {
-  //   sliderRef.current.slickNext();
-  // };
-
-  // const slidePrev = () => {
-  //   sliderRef.current.slickPrev();
-  // };
-
   // ステータスグラフのデータ
   const status = {
     HP: stats[0].base_stat,
@@ -65,7 +58,7 @@ const PokemonModal = ({
   
   return (
     <>
-      <div className={`modal-container-outer ${types[0]}`}>
+      <div key={key} className={`modal-container-outer ${types[0]}`}>
         <span className="close-icon" onClick={modalState}>＋</span>
         <div className="modal-container">
           <div className="top-row">

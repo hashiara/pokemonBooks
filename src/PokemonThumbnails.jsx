@@ -3,12 +3,12 @@ import './common.css';
 import './css/PokemonThumbnails.css';
 
 // アロー関数でコンポーネントを定義
-const PokemonThumbnails = ({ id, name, jpName, image, iconImage, type, jpType }) => {
+const PokemonThumbnails = ({ id, name, jpName, image, iconImage, type, jpType, key }) => {
   
   return (
     <>
       <div className="number">
-        <input className="id" type="button" value={`No.${id}`} />
+        <input className="id" type="button" key={key} value={`No.${id}`} />
       </div>
       <img src={image} alt={jpName} />
       <img src={iconImage} alt={jpName} className="icon-image" />
