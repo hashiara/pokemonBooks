@@ -2,7 +2,6 @@ import React, { useRef } from 'react';
 import './common.css';
 import './css/PokemonModal.css';
 import soundIcon from './img/sound-icon.png';
-import soundTest from './sound/411_トリデプス.mp3';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css'; 
 import 'slick-carousel/slick/slick-theme.css';
@@ -25,7 +24,8 @@ const PokemonModal = ({
   key
 }) => {
 
-  const [play] = useSound(soundTest);
+  let soundPath = `${process.env.PUBLIC_URL}/sound/${id}.mp3`;
+  const [play] = useSound(soundPath);
   const sliderRef = useRef();
 
   const settings = {
@@ -56,6 +56,13 @@ const PokemonModal = ({
   };
 
   const maxStat = 200;
+
+  
+
+  // const play = () => {
+  //   const audio = document.querySelector('.audio');
+  //   audio.play();
+  // }
   
   return (
     <>
@@ -66,7 +73,7 @@ const PokemonModal = ({
             <div className="header">
               <h1 className="font-l">{id}　{jpName}</h1>
               <div className="sound" onClick={() => play()}>
-                <audio src={sound} />
+                <audio className='audio' src={soundPath} />
                 <img className="sound-icon" src={soundIcon} alt="サウンド" />
               </div>
             </div>
