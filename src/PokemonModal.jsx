@@ -1,11 +1,10 @@
-import React, { useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import './common.css';
 import './css/PokemonModal.css';
 import soundIcon from './img/sound-icon.png';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css'; 
 import 'slick-carousel/slick/slick-theme.css';
-import useSound from 'use-sound';
 
 // アロー関数でコンポーネントを定義
 const PokemonModal = ({ 
@@ -23,7 +22,7 @@ const PokemonModal = ({
   stats 
 }) => {
 
-  const audioRef = useRef(sound);
+  const [audio, setAudio] = useState(null);
   const sliderRef = useRef();
 
   const settings = {
@@ -64,7 +63,16 @@ const PokemonModal = ({
   const maxStat = 200;
 
   const audioPlay = () => {
-    audioRef.current.play();
+    // 音声ファイルを読み込み
+    if (!audio) {
+      let loadedAudio = new Audio(sound);
+      setAudio(loadedAudio);
+      // iOSでの再生制約を満たすためにユーザーのインタラクションで再生を開始
+      loadedAudio.play();
+    } else {
+      // 既に読み込まれている音声を再生
+      audio.play();
+    }
   }
   
   return (
@@ -76,7 +84,7 @@ const PokemonModal = ({
             <div className="header">
               <h1 className="font-l">{id}　{jpName}</h1>
               <div className="sound">
-                <audio ref={audioRef} src={sound} type="audio/ogg" />
+                <audio src={sound} type="audio/ogg" />
                 <img className="sound-icon" src={soundIcon} alt="サウンド" onClick={audioPlay} />
               </div>
             </div>
