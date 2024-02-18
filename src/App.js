@@ -14,15 +14,6 @@ function App() {
 
   let addPokemonFlag = true;
 
-  // 画面ロード時に全ポケモンデータを配列に格納
-  // let pokemonArrays = [];
-  // const allPokemonUrl = "https://pokeapi.co/api/v2/pokemon?limit=2000";
-  //     fetch(allPokemonUrl)
-  //       .then(res => res.json())
-  //       .then(async (data) => {
-  //         pokemonArrays = data;
-  //       })
-
   // 検索ボタン押下でポケモンを検索
   const handleSearchClick = () => {
     let inputValue = document.querySelector('.search-text').value;
